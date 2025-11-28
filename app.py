@@ -124,8 +124,10 @@ if submitted:
             TASK:
             Recommend 2 specific cities that optimize their runway and network.
             
-            CRITICAL SAFETY PROTOCOL:
-            If recommending Colombia (Medellin/Bogota), insert a bold "⚠️ SECURITY WARNING" about current targeting of tourists/Americans. Be realistic.
+            CRITICAL SAFETY FILTER:
+            1. STRICTLY EXCLUDE COLOMBIA (Medellin, Bogota, etc) from recommendations due to current safety risks.
+            2. STRICTLY EXCLUDE any cities with active conflict or high violent crime rates.
+            3. Prioritize safety and stability in your selection.
             
             OUTPUT FORMAT (Markdown):
             
@@ -143,7 +145,7 @@ if submitted:
             
             **🛡️ Safety & Reality:**
             * Safety Score: [X/10]
-            * The "Real Talk" warning: [Honest downsides]
+            * The "Real Talk" warning: [Honest downsides, e.g. humidity, traffic, language barrier]
             
             ---
             (Repeat for City 2)
@@ -163,11 +165,13 @@ if submitted:
                 st.success("Strategy Generated. Here is your blueprint:")
                 st.markdown(response.choices[0].message.content)
                 
-                # Next Step CTA
-                with st.expander("🎁 Bonus: Get the 'Zero-to-Launch' Travel Playbook"):
-                    st.write("Don't figure it out alone. Download the step-by-step guide to booking your first flight for free and setting up your base.")
-                    # REPLACE WITH YOUR REAL LINK
-                    st.markdown("[👉 Download Playbook Here](https://docs.google.com/)")
+                # --- FINAL CTA: TRAVEL HACKING PLAYBOOK ---
+                st.markdown("---")
+                with st.expander("🎁 Bonus: Get the 'Travel Hacking Playbook'"):
+                    st.write("Teaches you to get airport lounge access, take advantage of credit card points, and get free flights using money you are already spending.")
+                    
+                    # ⚠️ REPLACE THE LINK BELOW WITH YOUR REAL GOOGLE DOC LINK ⚠️
+                    st.markdown("[👉 Download Playbook Here](https://docs.google.com/document/d/18on_Ztc00fjGH3ewkvbG0EFkbsFyKv6ErRd8lW5doCo/edit?usp=sharing)")
                     
             except Exception as e:
                 st.error(f"AI Error: {e}")
