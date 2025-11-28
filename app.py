@@ -4,9 +4,9 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # --- 1. CONFIG & STYLING ---
-st.set_page_config(page_title="Nomad Matchmaker", page_icon="✈️", layout="centered")
+st.set_page_config(page_title="Global Lifestyle AI", page_icon="🌍", layout="centered")
 
-# Custom CSS for the button and cleaner look
+# Custom CSS for the WhatsApp button and cleaner look
 st.markdown("""
 <style>
     div.stButton > button:first-child {
@@ -42,10 +42,10 @@ def save_lead_to_sheet(phone, budget, region, vibe):
         return False
 
 # --- 2. THE APP HEADER ---
-st.image("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop", use_container_width=True)
+# (Image removed as requested)
 
-st.title("✈️ The Nomad Matchmaker")
-st.write("Stop guessing where to go next. Tell us your vibe, and our AI will build your perfect travel profile.")
+st.title("🌍 The Global Lifestyle Architect")
+st.write("Design your ideal life abroad. Whether you are looking for lower taxes, better quality of life, or a new adventure, use AI to find your perfect base.")
 st.markdown("---")
 
 # --- 3. THE FORM ---
@@ -60,7 +60,7 @@ with st.form("travel_form"):
         region = st.multiselect("🗺️ Preferred Regions", ["Latin America", "Europe", "SE Asia", "Africa", "No Preference"])
     
     st.write("")
-    vibe = st.text_area("✨ What is your vibe?", placeholder="e.g. I need fast wifi, surf breaks, and good coffee. Not too crowded.")
+    vibe = st.text_area("✨ What is your vision?", placeholder="e.g. I need a modern apartment, strong crypto community, and proximity to nature.")
     
     st.write("")
     st.markdown("### 📱 Unlock Your Strategy")
@@ -69,7 +69,7 @@ with st.form("travel_form"):
     st.caption("By submitting your number, you agree that we may contact you via WhatsApp with travel tips and guides.")
     
     # Submit Button
-    submitted = st.form_submit_button("Find My Perfect City 🚀")
+    submitted = st.form_submit_button("Find My Global Base 🚀")
 
 # --- 4. THE LOGIC ---
 if submitted:
@@ -84,19 +84,19 @@ if submitted:
         save_lead_to_sheet(phone, budget, region, vibe)
         
         # Run AI
-        with st.spinner("Analyzing crime rates, wifi speeds, and cost of living..."):
+        with st.spinner("Analyzing cost of living, safety data, and lifestyle matches..."):
             client = openai.Client(api_key=st.secrets["openai_key"])
             
             # --- PROMPT START ---
             prompt = f"""
-            Act as a veteran digital nomad and security expert.
-            User Input: Budget {budget}, Regions {region}, Vibe {vibe}.
+            Act as a high-net-worth relocation consultant and security expert.
+            User Input: Budget {budget}, Regions {region}, Vision {vibe}.
             
-            Task: Recommend 2 specific cities.
+            Task: Recommend 2 specific cities for this entrepreneur to globalize their lifestyle.
             
             CRITICAL SAFETY PROTOCOL:
-            1. If you recommend ANY city in Colombia (especially Medellin/Bogota), you MUST include a warning block starting with "⚠️ SECURITY WARNING:" explaining that Americans/tourists are currently being targeted and dating apps can be dangerous. Be realistic about crime.
-            2. For all other cities, include a "Safety Score" (1-10) and a brief mention of what to watch out for (pickpockets, etc).
+            1. If you recommend ANY city in Colombia (especially Medellin/Bogota), you MUST include a warning block starting with "⚠️ SECURITY WARNING:" explaining that Americans/Westerners are currently being targeted and dating apps can be dangerous. Be realistic about crime rates.
+            2. For all other cities, include a "Safety Score" (1-10) and a brief mention of specific risks (pickpockets, scams, etc).
             
             Format output as Markdown:
             
@@ -107,16 +107,16 @@ if submitted:
             | :--- | :--- |
             | 💸 Est. Cost | [Amount] |
             | 🛡️ Safety Score | [X/10] |
-            | 🌮 Best for | [Key Activity] |
+            | 🚀 Best for | [Key Benefit] |
             
-            **Real Talk:** [Honest pros and cons]
+            **The Strategy:** [Why this fits their lifestyle vision]
             
             (If Colombia: Insert WARNING text here)
             
             ---
             (Repeat for City 2)
             
-            End with a friendly closing.
+            End with a professional, encouraging closing statement.
             """
             # --- PROMPT END ---
             
@@ -127,13 +127,14 @@ if submitted:
                 )
                 
                 # Display results
-                st.success("Strategy Generated!")
+                st.success("Analysis Complete. Here are your top recommendations:")
                 st.markdown(response.choices[0].message.content)
                 
                 # Next Step
                 with st.expander("🎁 Bonus: Download the full Travel Hacking Playbook"):
                     st.write("Get the PDF guide that explains exactly how to book the flights to these cities for free.")
-                    st.markdown("[Download Playbook (Click Here)](YOUR_GOOGLE_DOC_LINK_HERE)")
+                    # REPLACE THIS LINK BELOW WITH YOUR REAL GOOGLE DOC LINK
+                    st.markdown("[👉 Download Playbook Here](https://docs.google.com/)")
                     
             except Exception as e:
                 st.error(f"AI Error: {e}")
