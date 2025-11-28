@@ -45,7 +45,7 @@ def save_lead_to_sheet(phone, budget, region, vibe):
 # (Image removed as requested)
 
 st.title("🌍 The Global Lifestyle Architect")
-st.write("Design your ideal life abroad. Whether you are looking for lower taxes, better quality of life, or a new adventure, use AI to find your perfect base.")
+st.write("Design your ideal life abroad. Whether you are looking for cheaper living, better quality of life, or a new adventure, use AI to find your perfect base.")
 st.markdown("---")
 
 # --- 3. THE FORM ---
